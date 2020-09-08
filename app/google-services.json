@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "584700791997",
+    "firebase_url": "https://proyectocontactos-3fdf2.firebaseio.com",
+    "project_id": "proyectocontactos-3fdf2",
+    "storage_bucket": "proyectocontactos-3fdf2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:584700791997:android:1b80dcd519fac3c835fbd4",
+        "android_client_info": {
+          "package_name": "com.cruzdavid.contactoappcruzdavid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "584700791997-p5ggji2o7135vh46o05e4tdamjvnkjqt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_bDejqggU9t8k79oD12v14hrSjHVoCXc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "584700791997-p5ggji2o7135vh46o05e4tdamjvnkjqt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

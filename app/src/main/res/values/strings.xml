@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">ContactoApp</string>
+    <string name="email">Correo</string>
+    <string name="password">Contraseña</string>
+    <string name="forgotPassword">Olvidaste tu contraseña?</string>
+    <string name="textViewFirstName">First Name:</string>
+    <string name="lastName">Apellido</string>
+    <string name="login">Iniciar sesión</string>
+    <string name="createAct">Crear cuenta</string>
+    <string name="buttonSave">Save</string>
+    <string name="buttonUpdate">Update</string>
+    <string name="buttonDelete">Delete</string>
+    <string name="buttonView">View</string>
+    <string name="textViewUserId_texto">User Id:</string>
+    <string name="textViewFirstName_texto">First Name:</string>
+    <string name="textViewLastName_texto">Last Name:</string>
+    <string name="textViewPhoneNumber_texto" translatable="false">Phone Number:</string>
+    <string name="textViewEmailAddress_texto">Email Address:</string>
+    <string name="buttonSave_texto">Save</string>
+    <string name="buttonView_texto">View</string>
+    <string name="buttonUpdate_texto">Update</string>
+    <string name="buttonDelete_texto">Delete</string>
+    <string name="action_logout">Logout</string>
+    <string name="action_opcion2">Opcion2</string>
+
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Aplicacion de Contacto</string>
+    <string name="buttonSave">Guardar</string>
+    <string name="buttonUpdate">Actualizar</string>
+    <string name="buttonDelete">Eliminar</string>
+    <string name="buttonView">Mirar</string>
+    <string name="textViewFirstName">Primer Nombre</string>
+</resources>
