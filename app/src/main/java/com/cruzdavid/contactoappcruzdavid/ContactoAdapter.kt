@@ -18,12 +18,17 @@ class ContactoAdapter (private val context: Activity, private val contactos: Arr
         val textViewPhoneNumber = rowView.findViewById<TextView>(R.id.textViewPhoneNumber)
         val textViewEmailAddress = rowView.findViewById<TextView>(R.id.textViewEmailAddress)
         //To iterate through the collection using its index
-            textViewUserId.text = "Id: ${contactos[position].userId}"
+        textViewUserId.text = "${contactos[position].userId}"
+        textViewFirstName.text = "${contactos[position].firstName}"
+        textViewLastName.text = "${contactos[position].lastName}"
+        textViewPhoneNumber.text = "${contactos[position].phoneNumber}"
+        textViewEmailAddress.text = "${contactos[position].emailAddress}"
+            /*textViewUserId.text = "Id: ${contactos[position].userId}"
             textViewFirstName.text = "Name: ${contactos[position].firstName}"
             textViewLastName.text = "LastName: ${contactos[position].lastName}"
             textViewPhoneNumber.text = "Phone: ${contactos[position].phoneNumber}"
             textViewEmailAddress.text = "Email: ${contactos[position].emailAddress}"
-
+            */
         return rowView
     }
 

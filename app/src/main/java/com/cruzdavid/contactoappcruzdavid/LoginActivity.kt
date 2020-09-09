@@ -61,7 +61,7 @@ class LoginActivity : AppCompatActivity() {
 
                 //EscribirDatosEnArchivoInterno4()
                 //LeerDatosEnArchivoInterno4()
-                //EscribirDatosEnArchivoExterno()
+                //EscribirDatosEnArchivoExterno()z
                 //LeerDatosEnArchivoExterno()
                /* var intent = Intent(this, PrincipalTmp::class.java)
                 intent.putExtra(LOGIN_KEY, editTextTextEmailAddress.text.toString())
@@ -91,6 +91,18 @@ class LoginActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT).show()
                 }
             }
+    }
+    public override fun onStart() {
+        super.onStart()
+        // Check if user is signed in (non-null) and update UI accordingly.
+        val currentUser = auth.currentUser
+        if(currentUser != null)
+        {
+            var intent = Intent(this,PrincipalTmp::class.java)
+            intent.putExtra(LOGIN_KEY,auth.currentUser!!.email)
+            startActivity(intent)
+        }
+
     }
 
     fun SignUpNewUser(email:String, password:String){

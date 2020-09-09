@@ -6,7 +6,7 @@
         android:id="@+id/action_opcion2"
         android:orderInCategory="100"
         android:title="@string/action_opcion2"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="never" />
     <item
         android:id="@+id/action_logout"
         android:orderInCategory="100"

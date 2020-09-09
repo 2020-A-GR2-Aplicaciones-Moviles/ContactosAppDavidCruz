@@ -50,14 +50,13 @@ class PrincipalTmp : AppCompatActivity() {
         val contactoAdaptador = ContactoAdapter(this, contactos)
         listViewContacts.adapter = contactoAdaptador*/
        listViewContacts.setOnItemClickListener { parent, view, position, id ->
-           Toast.makeText(this, "Clicked item :"+" "+position,Toast.LENGTH_SHORT).show()
-           //Toast.makeText(this, "vas bien vas bien........", Toast.LENGTH_LONG).show()
-           /*listViewContacts.adapter.getItem(position)
-
-           Intent intent = new Intent(CurrentActivity.this, NextActivity.class);
-           intent.putExtra("position", position);
-           this.startActivity(intent);
-             */
+           selectedContactPosition = position
+           Toast.makeText(this, "Clicked item :"+" "+selectedContactPosition,Toast.LENGTH_SHORT).show()
+           //editTextFirstName.setText(contactos[selectedContactPosition].firstName.toString())
+           //editTextUserId.setText(contactos[selectedContactPosition].userId.toString())
+           //editTextLastName.setText(contactos[selectedContactPosition].lastName.toString())
+           //editTextPhoneNumber.setText(contactos[selectedContactPosition].phoneNumber.toString())
+           //editTextEmailAddress.setText(contactos[selectedContactPosition].emailAddress.toString())
         }
         buttonSave.setOnClickListener {
             val id = editTextUserId.text.toString().toInt()
