@@ -50,20 +50,14 @@ class PrincipalTmp : AppCompatActivity() {
         val contactoAdaptador = ContactoAdapter(this, contactos)
         listViewContacts.adapter = contactoAdaptador*/
        listViewContacts.setOnItemClickListener { parent, view, position, id ->
-           listViewContacts.adapter.getItem(position)
+           Toast.makeText(this, "Clicked item :"+" "+position,Toast.LENGTH_SHORT).show()
+           //Toast.makeText(this, "vas bien vas bien........", Toast.LENGTH_LONG).show()
+           /*listViewContacts.adapter.getItem(position)
 
-            //editTextUserId.setText(contactos.get(selectedContactPosition).firstName.toString().toInt())
-            //editTextUserId.setText(contactos[selectedContactPosition].userId.toString().toInt())
-            /*editTextFirstName.setText(contactos[selectedContactPosition].firstName.toString())
-            editTextLastName.setText(contactos[selectedContactPosition].lastName.toString())
-            editTextPhoneNumber.setText(contactos[selectedContactPosition].phoneNumber.toString())
-            editTextEmailAddress.setText(contactos[selectedContactPosition].emailAddress.toString())
+           Intent intent = new Intent(CurrentActivity.this, NextActivity.class);
+           intent.putExtra("position", position);
+           this.startActivity(intent);
              */
-            Toast.makeText(
-                this,
-                selectedContactPosition,
-                Toast.LENGTH_SHORT
-            ).show()
         }
         buttonSave.setOnClickListener {
             val id = editTextUserId.text.toString().toInt()
@@ -139,7 +133,20 @@ class PrincipalTmp : AppCompatActivity() {
          */
 
     }
-
+    fun showDialogAlertSimple() {
+        AlertDialog.Builder(this)
+            .setTitle("Titulo del diálogo")
+            .setMessage("Contenido del diálogo.")
+            .setPositiveButton(android.R.string.ok,
+                DialogInterface.OnClickListener { dialog, which ->
+                    //botón OK pulsado
+                })
+            .setNegativeButton(android.R.string.cancel,
+                DialogInterface.OnClickListener { dialog, which ->
+                    //botón cancel pulsado
+                })
+            .show()
+    }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_option, menu)
@@ -152,11 +159,14 @@ class PrincipalTmp : AppCompatActivity() {
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
             R.id.action_logout -> {
-                Toast.makeText(this, "Salir...", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Saliendo...", Toast.LENGTH_LONG).show()
+                var intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
                 true
             }
             R.id.action_opcion2 -> {
-                Toast.makeText(this, "Go opcion...", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Cargando...", Toast.LENGTH_LONG).show()
+
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -181,21 +191,6 @@ class PrincipalTmp : AppCompatActivity() {
     }
     */
 
-    fun SignUpNewContact(email:String, password:String){
-        auth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    val user = auth.currentUser
-                    Toast.makeText(baseContext, "New user saved.",
-                        Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(baseContext, task.exception!!.message,
-                        Toast.LENGTH_SHORT).show()
-                }
-
-                // ...
-            }
-    }
     fun ConsultarContactos() {
         val queue = Volley.newRequestQueue(this)
         val url = "https://api.androidhive.info/contacts/"
