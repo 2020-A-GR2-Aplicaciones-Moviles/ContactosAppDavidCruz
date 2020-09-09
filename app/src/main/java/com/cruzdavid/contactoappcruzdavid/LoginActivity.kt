@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
 import com.google.firebase.auth.FirebaseAuth
+
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_principal_tmp.*
 import java.io.File
@@ -40,14 +41,10 @@ class LoginActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance();
      //LeerDatosDeArchivoPreferencias()
         LeerDatosDeArchivoPreferenciasEncriptado()
-/*
-        var obj = funciones()
-        obj.EjemploFuncionesTipo1()
-      */
         buttonRegistro.setOnClickListener {
-            val email = editTextTextEmailAddress.text.toString()
-            val password = passwordEt.text.toString()
-            SignUpNewUser(email, password)
+
+            var intent = Intent(this,RegistroActivity::class.java)
+            startActivity(intent)
         }
         //Usuario: david.cruz@epn.edu.ec Password: Kerberos_123   --Use esa contraseña ya que primero valida que tenga mayusculas, caractere4s especiales y numeros--
         login_bt.setOnClickListener {
@@ -79,19 +76,24 @@ class LoginActivity : AppCompatActivity() {
 
     }
     fun AutenticarUsuario(email:String, password:String){
+        super.onStart()
+        val currentUser = auth.currentUser
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    var intent = Intent(this,PrincipalTmp::class.java)
-                    intent.putExtra(LOGIN_KEY,auth.currentUser!!.email)
-                    startActivity(intent)
-                    finish()
+                    if(currentUser != null) {
+                        var intent = Intent(this, PrincipalTmp::class.java)
+                        intent.putExtra(LOGIN_KEY, auth.currentUser!!.email)
+                        startActivity(intent)
+                        finish()
+                    }
                 } else {
                     Toast.makeText(baseContext, task.exception!!.message,
                         Toast.LENGTH_SHORT).show()
                 }
             }
     }
+/*
     public override fun onStart() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
@@ -102,8 +104,8 @@ class LoginActivity : AppCompatActivity() {
             intent.putExtra(LOGIN_KEY,auth.currentUser!!.email)
             startActivity(intent)
         }
-
     }
+ */
 
     fun SignUpNewUser(email:String, password:String){
         auth.createUserWithEmailAndPassword(email, password)
@@ -148,6 +150,7 @@ class LoginActivity : AppCompatActivity() {
             editor.commit()
         }
     }
+
     fun LeerDatosDeArchivoPreferencias() {
         val sharedPref = getPreferences(Context.MODE_PRIVATE)
         editTextTextEmailAddress.setText(sharedPref.getString(LOGIN_KEY, ""))

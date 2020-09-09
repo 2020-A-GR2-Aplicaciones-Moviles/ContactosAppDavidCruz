@@ -29,6 +29,7 @@ class PrincipalTmp : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_principal_tmp)
+        val titulo = "Manage Contacts"
         val username = intent.getStringExtra(LOGIN_KEY)
         auth = FirebaseAuth.getInstance();
         // Get the support action bar
@@ -36,7 +37,7 @@ class PrincipalTmp : AppCompatActivity() {
 
         // Set the action bar title, subtitle and elevation
         if (actionBar != null) {
-            actionBar.title = supportActionBar?.title.toString()
+            actionBar.title = titulo
             actionBar.subtitle = username.substringBefore("@")
             actionBar.elevation = 4.0F
         }
@@ -132,6 +133,7 @@ class PrincipalTmp : AppCompatActivity() {
          */
 
     }
+
     fun showDialogAlertSimple() {
         AlertDialog.Builder(this)
             .setTitle("Titulo del diálogo")
@@ -158,14 +160,22 @@ class PrincipalTmp : AppCompatActivity() {
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
             R.id.action_logout -> {
+                super.onStart()
                 Toast.makeText(this, "Saliendo...", Toast.LENGTH_LONG).show()
-                var intent = Intent(this, LoginActivity::class.java)
-                startActivity(intent)
+                val currentUser = auth.currentUser
+                if(currentUser != null)
+                {
+                    FirebaseAuth.getInstance().signOut()
+                    var intent = Intent(this,LoginActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
                 true
             }
             R.id.action_opcion2 -> {
                 Toast.makeText(this, "Cargando...", Toast.LENGTH_LONG).show()
-
+                var intent = Intent(this, TeacherListActivity::class.java)
+                startActivity(intent)
                 true
             }
             else -> super.onOptionsItemSelected(item)
